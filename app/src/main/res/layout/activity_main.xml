@@ -2,19 +2,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
-
-    <TextView
-        android:id="@+id/textView"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/colorFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="TextView" />
+        android:layout_weight="1">
+    </androidx.fragment.app.FragmentContainerView>
 
-    <TextView
-        android:id="@+id/textView2"
+
+
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/ListFragment"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="1"
-        android:text="TextView" />
+        android:layout_weight="1">
+
+    </androidx.fragment.app.FragmentContainerView>
 
 </LinearLayout>
