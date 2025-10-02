@@ -7,6 +7,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModelProvider;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -19,14 +20,15 @@ public class ColorPickFragment extends Fragment {
 
     private String[] colors;
     private GridLayout grid;
-
+    private ColorsViewModel colorsViewModel;
     private OnMessageSendListener mListener;
 
     private View.OnClickListener buttonListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
             int buttonIndex = grid.indexOfChild(v);
-
+            String currentColor = colors[buttonIndex];
+            colorsViewModel.addColor(currentColor);
         }
     };
 
@@ -40,7 +42,7 @@ public class ColorPickFragment extends Fragment {
         try {
             mListener = (OnMessageSendListener) context;
         } catch (ClassCastException e) {
-            throw new ClassCastException(context.toString() + " must implement OnMessageSendListener");
+            throw new ClassCastException(context.toString() + " must implement   OnMessageSendListener");
         }
     }
 
@@ -49,6 +51,8 @@ public class ColorPickFragment extends Fragment {
         super.onCreate(savedInstanceState);
         // get the resources String Array bellow
         colors = getResources().getStringArray(R.array.colors_array);
+        colorsViewModel = new ViewModelProvider(getActivity()).get(ColorsViewModel.class);
+
 
     }
 
@@ -58,6 +62,7 @@ public class ColorPickFragment extends Fragment {
         // Inflate the layout for this fragment here
         View view = inflater.inflate(R.layout.fragment_color_pick, container, false);
         grid = view.findViewById(R.id.lightGrid);
+
 
 
         // set the color of each button here
