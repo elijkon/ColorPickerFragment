@@ -57,6 +57,9 @@ public class MainActivity extends AppCompatActivity implements OnMessageSendList
 
         String message = intent.getStringExtra("sms");
         Toast.makeText(this,"Activ: ", Toast.LENGTH_SHORT).show();
+        if (message != null && colorsModel != null) {
+            colorsModel.addColor(message);
+        }
     }
 
     @Override
