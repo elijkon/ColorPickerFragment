@@ -1,5 +1,6 @@
 package com.example.colorpicker;
 
+import android.content.SharedPreferences;
 import android.util.Log;
 
 import androidx.lifecycle.MutableLiveData;
@@ -17,7 +18,9 @@ public class ColorsViewModel extends ViewModel {
         colorsLL = new MutableLiveData<>();
         LinkedList<String> l = new LinkedList<>();
         colorsLL.setValue(l);
+
     }
+
     public void setColorsLL(LinkedList<String> l) {
         colorsLL.setValue(l);
     }
